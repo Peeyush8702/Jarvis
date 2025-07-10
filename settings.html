@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings - Admin Panel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #00d4ff;
+      --light-bg: rgba(255, 255, 255, 0.1);
+      --blur: blur(10px);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: 'Poppins', sans-serif;
+      height: 100%;
+      overflow: hidden;
+      background: #0f2027;
+      color: #fff;
+    }
+
+    video#bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: -1;
+    }
+
+    .settings-container {
+      position: relative;
+      max-width: 600px;
+      margin: 80px auto;
+      background: var(--light-bg);
+      backdrop-filter: var(--blur);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .settings-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 26px;
+      color: var(--accent);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 15px;
+    }
+
+    .form-group input::placeholder {
+      color: #ccc;
+    }
+
+    .toggle-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .toggle-group label {
+      font-size: 15px;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 50px;
+      height: 26px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      background-color: #888;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 26px;
+      transition: 0.4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 4px;
+      bottom: 3px;
+      background-color: white;
+      border-radius: 50%;
+      transition: 0.4s;
+    }
+
+    .toggle-switch input:checked + .slider {
+      background-color: var(--accent);
+    }
+
+    .toggle-switch input:checked + .slider:before {
+      transform: translateX(24px);
+    }
+
+    .save-btn {
+      width: 100%;
+      padding: 14px;
+      background-color: var(--accent);
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #000;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .save-btn:hover {
+      background-color: #00bbf0;
+    }
+
+    @media (max-width: 600px) {
+      .settings-container {
+        margin: 40px 20px;
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Video -->
+  <video autoplay muted loop id="bg-video">
+    <source src="https://player.vimeo.com/external/8733059.sd.mp4?s=22f7a822d4a9e2e40a1d3a1a56c3d2b4518cfdae&profile_id=164&oauth2_token_id=57447761" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Overlay -->
+  <div class="overlay"></div>
+
+  <div class="settings-container">
+    <h2>⚙️ Admin Settings</h2>
+
+    <div class="form-group">
+      <label for="name">Display Name</label>
+      <input type="text" id="name" placeholder="Enter your name">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="admin@example.com">
+    </div>
+
+    <div class="form-group">
+      <label for="theme">Theme Preference</label>
+      <select id="theme">
+        <option>Dark Mode</option>
+        <option>Light Mode</option>
+        <option>Auto</option>
+      </select>
+    </div>
+
+    <div class="toggle-group">
+      <label for="notifications">Enable Notifications</label>
+      <div class="toggle-switch">
+        <input type="checkbox" id="notifications" checked>
+        <span class="slider"></span>
+      </div>
+    </div>
+
+    <div class="toggle-group">
+      <label for="autoUpdates">Auto Updates</label>
+      <div class="toggle-switch">
+        <input type="checkbox" id="autoUpdates">
+        <span class="slider"></span>
+      </div>
+    </div>
+
+    <button class="save-btn" onclick="saveSettings()">💾 Save Changes</button>
+  </div>
+
+  <script>
+    function saveSettings() {
+      alert("Settings saved successfully!");
+      // You can add localStorage or API integration here
+    }
+  </script>
+
+</body>
+</html>

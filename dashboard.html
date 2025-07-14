@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Dashboard</title>
+  <title>SparkEd LMS Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -27,7 +27,6 @@
       color: var(--text);
     }
 
-    /* Video Background */
     #bg-video {
       position: fixed;
       top: 0;
@@ -38,7 +37,6 @@
       z-index: -2;
     }
 
-    /* Dark Overlay */
     .overlay {
       position: fixed;
       top: 0;
@@ -156,6 +154,8 @@
     }
   </style>
 </head>
+<!-- Replace your previous HTML with this block for the student dashboard -->
+<!-- Only the content inside <body> has changed; the styles and structure remain the same -->
 <body>
 
   <!-- Background Video -->
@@ -170,48 +170,70 @@
   <div class="container">
     <!-- Sidebar -->
     <div class="sidebar">
-      <h2>🛠 Admin Panel</h2>
-      <a href="#">📊 Dashboard</a>
-      <a href="#">👥 Users</a>
-      <a href="settings.html">⚙️ Settings</a>
-      <a href="#">📂 Reports</a>
+      <h2>📚 SparkEd LMS</h2>
+      <a href="#">🏠 Dashboard</a>
+      <a href="#">📖 My Courses</a>
+      <a href="#">📝 Assignments</a>
+      <a href="#">📊 Grades</a>
+      <a href="#">💬 Discussions</a>
       <a href="index.html" onclick="return logout()">🚪 Logout</a>
     </div>
 
     <!-- Main Content -->
     <div class="main">
       <div class="top-bar">
-        <h1>Welcome Back, Admin!</h1>
-        <div class="user">Status: Logged in 🔒</div>
+        <h1>Hello, Student!</h1>
+        <div class="user">Status: Enrolled ✅</div>
       </div>
 
-      <div class="cards">
-        <div class="card">
-          <h3>👥 Total Users</h3>
-          <p>1,245</p>
-        </div>
-        <div class="card">
-          <h3>📦 Active Projects</h3>
-          <p>34</p>
-        </div>
-        <div class="card">
-          <h3>📈 Monthly Visits</h3>
-          <p>52,430</p>
-        </div>
-        <div class="card">
-          <h3>💬 New Messages</h3>
-          <p>12</p>
-        </div>
+      <div class="cards" id="dashboardCards">
+  	<!-- Cards will be dynamically injected here -->
+	</div>
+
       </div>
     </div>
   </div>
 
   <script>
-    function logout() {
-      alert("You have been logged out.");
-      return true;
-    }
-  </script>
+  async function loadDashboardData() {
+    // Simulated API response - replace with real API call
+    const data = {
+      coursesEnrolled: 6,
+      pendingAssignments: 3,
+      overallGrade: "B+",
+      newNotifications: 4
+    };
+
+    const cards = [
+      { icon: "📚", title: "Courses Enrolled", value: data.coursesEnrolled },
+      { icon: "📥", title: "Pending Assignments", value: data.pendingAssignments },
+      { icon: "📊", title: "Overall Grade", value: data.overallGrade },
+      { icon: "🔔", title: "Notifications", value: `${data.newNotifications} New` }
+    ];
+
+    const container = document.getElementById("dashboardCards");
+
+    cards.forEach(card => {
+      const div = document.createElement("div");
+      div.className = "card";
+      div.innerHTML = `
+        <h3>${card.icon} ${card.title}</h3>
+        <p>${card.value}</p>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  function logout() {
+    alert("You have been logged out of SparkEd.");
+    return true;
+  }
+
+  // Load data on page load
+  window.onload = loadDashboardData;
+</script>
+
 
 </body>
+</head>
 </html>

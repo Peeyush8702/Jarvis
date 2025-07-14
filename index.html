@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Login</title>
+  <title>Login Portal SparkED </title>
   <style>
     * {
       margin: 0;
@@ -140,7 +140,7 @@
 
   <!-- Login Form -->
   <div class="login-container">
-    <h2>Admin Login</h2>
+    <h2>SparkED Login Portal</h2>
     <form id="loginForm">
       <label for="username">Username</label>
       <input type="text" id="username" name="username" required />
@@ -171,7 +171,7 @@
       const password = document.getElementById('password').value.trim();
       const error = document.getElementById('error');
 
-      const adminUsername = 'admin';
+      const adminUsername = 'student';
       const adminPassword = '1234';
 
       if (username === adminUsername && password === adminPassword) {
